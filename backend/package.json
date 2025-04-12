@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "create-schema": "node schema.js",
     "dev": "node --watch app.js",
     "generate-keys": "node auth-config/key-pair-generator.js",
     "start": "node app.js"
