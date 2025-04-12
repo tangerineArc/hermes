@@ -7,7 +7,8 @@
     "create-schema": "node schema.js",
     "dev": "node --watch app.js",
     "generate-keys": "node auth-config/key-pair-generator.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "sow-seeds": "node seeds.js"
   },
   "keywords": [],
   "author": "Swagatam Pati <swagatamheroz@gmail.com>",
