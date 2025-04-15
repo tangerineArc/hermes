@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS Coach (
   coach_number VARCHAR ( 10 ) NOT NULL,
   class ENUM ( '1A', '2A', '3A', '3E', 'EC', 'CC', 'SL', '2S' ) NOT NULL,
   num_seats TINYINT NOT NULL,
+  price_per_km DECIMAL ( 10, 2 ) NOT NULL,
 
   FOREIGN KEY ( train_number ) REFERENCES Train ( number )
 );
@@ -81,7 +82,7 @@ CREATE TABLE IF NOT EXISTS Passenger (
   gender ENUM ( 'Male', 'Female', 'Other' ) NOT NULL,
   phone_number VARCHAR ( 15 ) NOT NULL,
   status ENUM ( 'WL', 'RAC', 'CNF', 'CANCELLED' ) NOT NULL,
-  quota ENUM ( 'GN', 'LD', 'HP', 'SS', 'NIL' ) NOT NULL,
+  quota ENUM ( 'GN', 'LD', 'HP', 'SS' ) NOT NULL,
 
   FOREIGN KEY ( seat_id ) REFERENCES Seat ( id )
 );
