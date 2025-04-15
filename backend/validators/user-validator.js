@@ -5,22 +5,26 @@ import { body } from "express-validator";
 import * as db from "../db/queries.js";
 
 const validateUser = [
-  body("username")
+  body("phoneNumber")
     .trim()
-    .isLength({ min: 3 })
+    .isLength({ min: 10, max: 15 })
     .withMessage(
-      "Username must be at least 3 characters and at most 100 characters long"
+      "Phone number must be at least 10 characters and at most 15 characters long"
     )
-    .custom(async (username) => {
-      const user = await db.selectUserByUsername({
-        username: username.toLowerCase(),
-      });
+    .custom(async (phoneNumber) => {
+      const user = await db.selectUserByPhoneNumber({ phoneNumber });
 
       if (user) {
-        throw new Error("Provided username has already been taken");
+        throw new Error("Provided phone number has already been registered");
       }
       return true;
     }),
+  body("name")
+    .trim()
+    .isLength({ min: 3, max: 255 })
+    .withMessage(
+      "Name must be at least 3 characters long and at most 255 characters long"
+    ),
   body("password")
     .trim()
     .isLength({ min: 8 })
