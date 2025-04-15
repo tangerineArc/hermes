@@ -42,7 +42,7 @@ LOAD DATA LOCAL INFILE '${coachesDataFilePath}'
 INTO TABLE Coach
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
 LINES TERMINATED BY '\n' IGNORE 1 LINES
-( train_number, coach_number, class, num_seats );
+( train_number, coach_number, class, num_seats, price_per_km );
 `;
 
 main();
