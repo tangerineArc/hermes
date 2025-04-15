@@ -1,8 +1,9 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
+import { forwardRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -36,7 +37,7 @@ const buttonVariants = cva(
   }
 );
 
-const Button = React.forwardRef(
+const Button = forwardRef(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
@@ -50,4 +51,4 @@ const Button = React.forwardRef(
 );
 Button.displayName = "Button";
 
-export { Button };
+export { Button, buttonVariants };
