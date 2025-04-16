@@ -63,7 +63,6 @@ CREATE TABLE IF NOT EXISTS Ticket (
   pnr VARCHAR ( 10 ) PRIMARY KEY,
   train_number VARCHAR ( 10 ) NOT NULL,
   journey_date DATE NOT NULL,
-  ticket_booker_id INT NOT NULL,
   booked_at DATETIME DEFAULT NOW() NOT NULL,
   origin_station_code VARCHAR ( 20 ) NOT NULL,
   destination_station_code VARCHAR ( 20 ) NOT NULL,
@@ -77,6 +76,7 @@ CREATE TABLE IF NOT EXISTS Passenger (
   id INT AUTO_INCREMENT PRIMARY KEY,
   seat_id INT,
   ticket_pnr VARCHAR ( 10 ) NOT NULL,
+  ticket_booker_id INT NOT NULL,
   name VARCHAR ( 255 ) NOT NULL,
   age TINYINT UNSIGNED NOT NULL,
   gender ENUM ( 'Male', 'Female', 'Other' ) NOT NULL,
@@ -84,7 +84,8 @@ CREATE TABLE IF NOT EXISTS Passenger (
   status ENUM ( 'WL', 'RAC', 'CNF', 'CANCELLED' ) NOT NULL,
   quota ENUM ( 'GN', 'LD', 'HP', 'SS' ) NOT NULL,
 
-  FOREIGN KEY ( seat_id ) REFERENCES Seat ( id )
+  FOREIGN KEY ( seat_id ) REFERENCES Seat ( id ),
+  FOREIGN KEY ( ticket_booker_id ) REFERENCES User ( id )
 );
 
 CREATE TABLE IF NOT EXISTS Payment (
