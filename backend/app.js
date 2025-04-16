@@ -9,7 +9,8 @@ import passport from "passport";
 import authStrategy from "./auth-config/strategy.js";
 
 import authRouter from "./routes/auth-router.js";
-import indexRouter from "./routes/index-router.js";
+import stationsRouter from "./routes/stations-router.js";
+import trainsRouter from "./routes/trains-router.js";
 
 const app = express();
 
@@ -37,8 +38,9 @@ app.use(express.urlencoded({ extended: true })); // parse formdata
 passport.use(authStrategy);
 
 /* routes */
-app.use("/", indexRouter);
 app.use("/auth", authRouter);
+app.use("/stations", stationsRouter);
+app.use("/trains", trainsRouter);
 
 /* non-existent routes handler */
 app.all("*", (req, res) => {
